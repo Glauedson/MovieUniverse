@@ -9,7 +9,7 @@ export default function Home() {
     <>
     <Header />
     <div className={style.mainHome} > 
-        ola  
+        <h3>ola</h3>
     </div>
     </>
   )

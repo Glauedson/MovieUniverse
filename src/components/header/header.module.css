@@ -1,8 +1,94 @@
 .header{
-    background-color: var(--primary-color);
     display: flex;
-    padding: 20px 50px; 
+    padding: 0 20px; 
     position: fixed;
     width: 100%;
 
+}
+
+h3 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.headerContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+    background-color: rgba(248, 248, 248, 0.068);
+    backdrop-filter: blur(10px);
+    padding: 0 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.profileImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.menuIcon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+.headerCategory {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.headerCategoryLinks {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    padding-right: 25px;
+}
+
+.headerCategoryLinks a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.headerCategoryLinks a:hover {
+    color: var(--primary-color);
+    transition: color 0.3s ease-in-out;
+
+}
+
+/* Design Responsivo */
+@media (max-width: 530px) {
+    .headerCategoryLinks {
+        display: none;
+    }
+
+    .headerContent {
+        background-color: var(--background-color);
+        padding: 0;
+    }
+
+    .profileImage {
+        display: none;
+    }
+
+    .menuIcon {
+        display: flex;
+        width: 1rem;
+        padding: 10px;
+    }
 }
