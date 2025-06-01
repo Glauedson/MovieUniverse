@@ -36,8 +36,8 @@ h3 {
 }
 
 .menuIcon {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
     display: none;
 }
@@ -59,20 +59,40 @@ h3 {
 }
 
 .headerCategoryLinks a {
-    color: white;
+    color: var(--primary-color);
     text-decoration: none;
     font-size: 1rem;
-    font-weight: bolder;
-}
-
-.headerCategoryLinks a:hover {
-    color: var(--primary-color);
-    transition: color 0.3s ease-in-out;
-
+    
 }
 
 /* Design Responsivo */
 @media (max-width: 530px) {
+    .logo {
+        padding: 0;
+    }
+
+    .header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, #ffffff, #535353, #ffffff);
+        background-size: 200% 100%;
+        animation: slideLine 2s linear infinite alternate;
+        z-index: 2;
+    }
+  
+    @keyframes slideLine {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+    }
+
     .headerCategoryLinks {
         display: none;
     }
@@ -89,6 +109,7 @@ h3 {
     .menuIcon {
         display: flex;
         width: 1rem;
-        padding: 10px;
+        padding: 9px 12px;
+        
     }
 }
