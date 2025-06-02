@@ -1,9 +1,10 @@
 .header{
     display: flex;
+    flex-direction: column;
     padding: 0 20px; 
     position: fixed;
     width: 100%;
-
+    z-index: 1000;
 }
 
 h3 {
@@ -40,6 +41,12 @@ h3 {
     height: 50px;
     cursor: pointer;
     display: none;
+    font-size: clamp(1.3rem, 1.8vw, 2rem);
+    transition: transform 0.3s ease-in-out;
+}
+
+.menuIcon:hover {
+    transform: scale(1.1);
 }
 
 .headerCategory {
@@ -62,12 +69,64 @@ h3 {
     color: var(--primary-color);
     text-decoration: none;
     font-size: 1rem;
-    
+}
+
+/* Mobile Navigation Styles */
+.mobileNav {
+    max-height: 0;
+    overflow: hidden;
+    background-color: rgb(211, 211, 211);
+    backdrop-filter: blur(10px);
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.mobileNavOpen {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.mobileNavContent {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    transform: translateY(-20px);
+    transition: transform 0.4s ease-in-out;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.mobileNavOpen .mobileNavContent {
+    transform: translateY(0);
+}
+
+.mobileNavContent a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+    transition: all 0.3s ease;
+}
+
+.mobileNavContent a:hover {
+    color: #ffffff;
+    padding-left: 10px;
+}
+
+.mobileNavContent a:last-child {
+    border-bottom: none;
 }
 
 /* Design Responsivo */
 @media (max-width: 530px) {
     .logo {
+        padding: 0;
+    }
+
+    .header {
         padding: 0;
     }
 
@@ -77,7 +136,7 @@ h3 {
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 2px;
+        height: 3px;
         background: linear-gradient(270deg, #ffffff, #535353, #ffffff);
         background-size: 200% 100%;
         animation: slideLine 2s linear infinite alternate;
@@ -85,12 +144,12 @@ h3 {
     }
   
     @keyframes slideLine {
-    0% {
-        background-position: 0% 0%;
-    }
-    100% {
-        background-position: 100% 0%;
-    }
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 100% 0%;
+        }
     }
 
     .headerCategoryLinks {
@@ -109,7 +168,16 @@ h3 {
     .menuIcon {
         display: flex;
         width: 1rem;
-        padding: 9px 12px;
-        
+        padding: 9px 25px;
+    }
+
+    .mobileNav {
+        display: block;
+    }
+}
+
+@media (min-width: 531px) {
+    .mobileNav {
+        display: none;
     }
 }
