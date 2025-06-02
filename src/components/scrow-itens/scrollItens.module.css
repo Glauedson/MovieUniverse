@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    overflow-x: auto;
+    padding-left: 15px;
+    padding-top: 20px;
+    gap: 1rem;
+    
+}
+
+.scrollContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-bottom: 20px;
+}
+
+.scrollItens {
+    display: flex;
+    gap: 1rem;
+    border-radius: 10px;
+    padding: 10px;
+}

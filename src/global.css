@@ -1,9 +1,12 @@
 :root {
     --primary-color: #4a90e2;
     --background-color: #00050d;
+    --card-color: #151515;
+    --white-color: #DFDFDF;
 }
 
 * {
+    -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
