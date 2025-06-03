@@ -13,6 +13,36 @@
     padding: 0.7rem;
 }
 
+.starsContainer {
+    justify-items: right;
+    padding-right: 10px;
+    aspect-ratio: 2 / 3;
+    width: 100%;
+    background-size: cover;
+}
+
+.rating {
+    background-color: var(--card-color);
+    padding: 10px 9px 10px 9px;
+    border-radius: 0 0 9px 9px;
+    -webkit-box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.63);
+    -moz-box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.651);
+    box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.63);
+}
+
+.rating p {
+    margin-top: clamp(0.2rem, 0.5vw, 0.4rem);
+    text-align: center;
+    font-size: clamp(0.7rem, 1vw, 1rem);
+    color: var(--white-color);
+}
+
+.iconStar {
+    color: var(--primary-color);
+    font-size: clamp(1.2rem, 1.4vw, 1.7rem);
+    align-items: center;
+}
+
 .titulo {
     white-space: nowrap;
     overflow: hidden;
@@ -24,9 +54,4 @@
     padding-top: 4px;
     color: #ffffff5b;
     font-size: 0.7rem;
-}
-
-.poster {
-    aspect-ratio: 2 / 3;
-    width: 100%;
 }

@@ -1,4 +1,6 @@
 import styles from './ItensCard.module.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar } from "@fortawesome/free-solid-svg-icons"
 
 const ItensCard = ({ item, tipo }) => {
   const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
@@ -39,16 +41,28 @@ const ItensCard = ({ item, tipo }) => {
     : '/placeholder-movie.jpg'
 
   return (
-    <div className={styles.card}>
+    <div 
+      className={styles.card}
+      onClick={() => window.location.href = `/detalhes/${tipo}/${item.id}`}
+    >
+
       <div className={styles.imageContainer}>
-        <img 
-          src={imagemUrl}
-          alt={getTitulo()}
-          className={styles.poster}
-          onError={(e) => {
-            e.target.src = '/placeholder-movie.jpg'; // fallback se a imagem não carregar
+        <div className={styles.starsContainer}
+          style={{
+            backgroundImage: `url(${imagemUrl})`,
           }}
-        />
+        >
+          <div className={styles.rating}>
+            <FontAwesomeIcon
+            icon={faStar}
+            className={styles.iconStar}
+            />
+
+            <p className={styles.nota}>
+              {item.vote_average.toFixed(1)}
+            </p>
+          </div>
+        </div>
       </div>
       
       <div className={styles.info}>
@@ -59,17 +73,6 @@ const ItensCard = ({ item, tipo }) => {
         <p className={styles.data}>
           {formatarData(getData())}
         </p>
-        
-        {/* 
-        {item.vote_average && (
-          <div className={styles.rating}>
-            <span className={styles.estrela}>⭐</span>
-            <span className={styles.nota}>
-              {item.vote_average.toFixed(1)}
-            </span>
-          </div>
-        )}
-        */}
       </div>
     </div>
   )
