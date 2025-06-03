@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ItensCard from '../Itens-Card/ItensCard.jsx'
 import styles from './scrollItens.module.css'
+import { Link } from 'react-router-dom'
 
 const ScrollItens = ({ tipo = 'filmes' }) => {
   const [itens, setItens] = useState([])
@@ -65,7 +66,7 @@ const ScrollItens = ({ tipo = 'filmes' }) => {
     <div className={styles.container}>
   
       <div className={styles.scrollContainer}>
-        <div className={styles.scrollItens}>
+        <div className={styles.scrollItens} >
           {itens.map((item) => (
             <ItensCard 
               key={item.id} 

@@ -1,6 +1,7 @@
 import styles from './ItensCard.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar } from "@fortawesome/free-solid-svg-icons"
+import { Link } from 'react-router-dom'
 
 const ItensCard = ({ item, tipo }) => {
   const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
@@ -41,17 +42,18 @@ const ItensCard = ({ item, tipo }) => {
     : '/placeholder-movie.jpg'
 
   return (
-    <div 
+    <Link 
+      to={`/details/${item.id}`} 
       className={styles.card}
-      onClick={() => window.location.href = `/detalhes/${tipo}/${item.id}`}
     >
+  
 
-      <div className={styles.imageContainer}>
-        <div className={styles.starsContainer}
-          style={{
+      <div className={styles.imageContainer}
+      style={{
             backgroundImage: `url(${imagemUrl})`,
           }}
-        >
+      >
+        <div className={styles.starsContainer} title='Avaliação'>
           <div className={styles.rating}>
             <FontAwesomeIcon
             icon={faStar}
@@ -70,11 +72,11 @@ const ItensCard = ({ item, tipo }) => {
           {getTitulo()}
         </h3>
         
-        <p className={styles.data}>
+        <p className={styles.data} title={formatarData(getData())}>
           {formatarData(getData())}
         </p>
       </div>
-    </div>
+    </Link>
   )
 }
 
