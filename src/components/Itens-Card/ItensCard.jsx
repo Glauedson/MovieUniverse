@@ -12,7 +12,7 @@ const ItensCard = ({ item, tipo }) => {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
-    });
+    }).toUpperCase();
   };
 
   // Pega o título correto baseado no tipo

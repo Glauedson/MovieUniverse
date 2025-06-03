@@ -4,6 +4,7 @@
     width: 30vw;
     max-width: 250px;
     min-width: 170px;
+    
 }
 
 .info {
@@ -16,13 +17,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: lighter;
+    font-weight: 500;
 }
 
 .data {
-    padding-top: 5px;
+    padding-top: 4px;
     color: #ffffff5b;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 .poster {

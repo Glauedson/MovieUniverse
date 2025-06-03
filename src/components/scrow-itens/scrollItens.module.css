@@ -2,9 +2,50 @@
     display: flex;
     overflow-x: auto;
     padding-left: 15px;
-    padding-top: 20px;
+    padding-top: 10px;
     gap: 1rem;
+    --sb-size: 9px;
+    --sb-track-color: #ffffff0c;
+    --sb-thumb-color: var(--primary-color);
+    scroll-margin-left: 15px;
     
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 2/0.74;
+  min-height: 365px;
+  box-shadow:
+    13px 0px 9px -3px rgba(0,0,0,0.75) inset,  
+    -13px 0px 9px -3px rgba(0,0,0,0.75) inset;
+  pointer-events: none;
+  display: flex;
+  z-index: 0;
+}
+
+.container::-webkit-scrollbar {
+    height: var(--sb-size);
+    
+}
+
+.container::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .container {
+      scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+  }
 }
 
 .scrollContainer {

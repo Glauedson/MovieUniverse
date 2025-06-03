@@ -21,7 +21,7 @@ h3 {
     height: 60px;
     align-items: center;
     background-color: rgba(248, 248, 248, 0.068);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     padding: 0 20px;
     border-radius: 0 0 10px 10px;
 }
@@ -68,6 +68,7 @@ h3 {
 .headerCategoryLinks a {
     color: var(--primary-color);
     text-decoration: none;
+    font-weight: bold;
     font-size: 1rem;
 }
 
@@ -84,6 +85,7 @@ h3 {
 .mobileNavOpen {
     max-height: 200px;
     opacity: 1;
+    z-index: 2;
 }
 
 .mobileNavContent {
