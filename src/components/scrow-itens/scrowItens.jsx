@@ -1,55 +1,49 @@
 import React, { useState, useEffect } from 'react'
 import ItensCard from '../Itens-Card/ItensCard.jsx'
 import styles from './scrollItens.module.css'
-import { Link } from 'react-router-dom'
 
-const ScrollItens = ({ tipo = 'filmes' }) => {
+const ScrollItens = ({ 
+  dados, 
+  tipo = 'filmes', 
+}) => {
   const [itens, setItens] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const API_KEY = import.meta.env.VITE_API_KEY
-  const BASE_URL = 'https://api.themoviedb.org/3'
-
   useEffect(() => {
-    const fetchItens = async () => {
-      try {
-        setLoading(true)
-        setError(null)
-
-        // Determina o endpoint baseado no tipo
-        const endpoint = tipo === 'filmes' 
-          ? `${BASE_URL}/movie/popular` 
-          : `${BASE_URL}/tv/popular`
-
-        const response = await fetch(`${endpoint}?api_key=${API_KEY}&language=pt-BR&page=1`)
-        
-        if (!response.ok) {
-          throw new Error('Erro ao buscar dados da API')
-        }
-
-        const data = await response.json()
-        setItens(data.results || [])
-      } catch (err) {
-        setError(err.message)
-        console.error('Erro ao buscar itens:', err)
-      } finally {
-        setLoading(false)
+    const carregarDados = async () => {
+      // Se os dados já foram passados como prop, usa eles diretamente
+      if (dados && Array.isArray(dados)) {
+        setItens(dados)
+        return
       }
-    };
 
-    if (API_KEY) {
-      fetchItens()
-    } else {
-      setError('API Key não encontrada')
-      setLoading(false)
+      // Se dados é uma função (promise), executa ela
+      if (typeof dados === 'function') {
+        try {
+          setLoading(true)
+          setError(null)
+          
+          const resultado = await dados()
+          setItens(resultado || [])
+        } catch (err) {
+          setError(err.message)
+          console.error('Erro ao carregar dados:', err)
+        } finally {
+          setLoading(false)
+        }
+      }
     }
-  }, [tipo, API_KEY])
+
+    carregarDados()
+  }, [dados])
 
   if (loading) {
     return (
       <div className={styles.container}>
-        <div className={styles.loading}>Carregando {tipo}...</div>
+        <div className={styles.loading}>
+          Carregando {tipo === 'filmes' ? 'filmes' : 'atores'}...
+        </div>
       </div>
     )
   }
@@ -64,9 +58,9 @@ const ScrollItens = ({ tipo = 'filmes' }) => {
 
   return (
     <div className={styles.container}>
-  
+      <div className={styles.shadow}></div>
       <div className={styles.scrollContainer}>
-        <div className={styles.scrollItens} >
+        <div className={styles.scrollItens}>
           {itens.map((item) => (
             <ItensCard 
               key={item.id} 

@@ -5,6 +5,10 @@
     --white-color: #DFDFDF;
 }
 
+#root {
+    background-color: #060606;
+}
+
 * {
     -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;

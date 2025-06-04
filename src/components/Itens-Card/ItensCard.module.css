@@ -20,6 +20,7 @@
     transform: scale(1.07);
 }
 
+/*
 .imageContainer::after {
     content: '';
     position: absolute;
@@ -34,6 +35,7 @@
         saturate(90%);
     z-index: -1;
 }
+*/
 
 .info {
     display: flex;
