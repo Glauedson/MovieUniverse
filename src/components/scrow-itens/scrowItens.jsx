@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ItensCard from '../Itens-Card/ItensCard.jsx'
 import styles from './scrollItens.module.css'
 
-const ScrollItens = ({ 
-  dados, 
-  tipo = 'filmes', 
-}) => {
+const ScrollItens = ({ dados, tipo, }) => {
   const [itens, setItens] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -40,10 +37,20 @@ const ScrollItens = ({
 
   if (loading) {
     return (
+      <div className={styles.shadow}>
       <div className={styles.container}>
-        <div className={styles.loading}>
-          Carregando {tipo === 'filmes' ? 'filmes' : 'atores'}...
+      <div className={styles.scrollContainer}>
+        <div className={styles.scrollItens}>
+          {itens.map((item) => (
+            <ItensCard 
+              key={item.id} 
+              item={item} 
+              tipo={tipo}
+            />
+          ))}
         </div>
+      </div>
+      </div>
       </div>
     )
   }

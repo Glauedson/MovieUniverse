@@ -34,9 +34,10 @@ const ItensCard = ({ item, tipo }) => {
       ? `${IMAGE_BASE_URL}${item.poster_path}`
       : '/placeholder-movie.jpg'
 
+
     return (
       <Link 
-        to={`/details/${item.id}`} 
+        to={`/details/${tipo}/${item.id}`} 
         className={styles.card}
       >
         <div className={styles.imageContainer}

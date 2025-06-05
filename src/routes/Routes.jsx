@@ -7,7 +7,7 @@ export default function RoutesPages() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/details/:id" element={<Details/>} />
+        <Route path="/details/:category/:id" element={<Details/>} />
       </Routes>
     </Router>
   )

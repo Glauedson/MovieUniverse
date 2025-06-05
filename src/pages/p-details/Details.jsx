@@ -5,11 +5,23 @@ import Header from '../../components/header/header.jsx'
 
 export default function Details() {
   const { id } = useParams()
+  const { category } = useParams()
 
-  tmdbAPI.getMovieDetails(id).then(details => {
-    setTitlePage(details.title)
-  });
+  if ( category === 'movies' ) {
+    tmdbAPI.getMovieDetails(id)
+      .then((data) => {
+        console.log(data)
+        setTitlePage(data.title || 'Detalhes do Filme')
+      })
+  } else {
+    tmdbAPI.getTVShowDetails(id)
+      .then((data) => {
+        console.log(data)
+        setTitlePage(data.name || 'Detalhes da Série')
+      })
+  }
 
+  
 
   return (
     <>

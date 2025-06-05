@@ -5,7 +5,7 @@ import tmdbAPI from '../../api/tmdb.js'
 import style from './home.module.css'
 
 export default function Home() {
- 
+
   return (
     <>
     <Header />
@@ -15,22 +15,19 @@ export default function Home() {
         <h3>MAIS POPULARES</h3>
         <ScrollItens 
           dados={tmdbAPI.getPopularMovies}
-          tipo="filmes"
-          titulo="Filmes Populares"
+          tipo="movies"
         />
 
         <h3>SERIES POPULARES</h3>
         <ScrollItens 
             dados={tmdbAPI.getPopularTVShows}
-            tipo="filmes"
-            titulo="Filmes Populares"
+            tipo="series"
         />
 
         <h3>FILMES MAIS BEM AVALIADOS</h3>
         <ScrollItens 
             dados={tmdbAPI.getTopRatedMovies}
-            tipo="filmes"
-            titulo="Filmes Populares"
+            tipo="movies"
           />
       </div>   
     </div>
