@@ -8,7 +8,6 @@ const ItensCard = ({ item, tipo }) => {
   
   // Renderiza card de filme
   const renderFilmeCard = () => {
-    // Função para formatar a data
     const formatarData = (data) => {
       if (!data) return 'Data não disponível'
       
@@ -71,30 +70,27 @@ const ItensCard = ({ item, tipo }) => {
     )
   }
 
-  // Renderiza card de ator (estrutura pronta para você estilizar)
+  // Renderiza card de ator 
   const renderAtorCard = () => {
-    // Dados do ator já separados e prontos para uso:
     const dadosAtor = {
       id: item.id,
       nome: item.name || 'Nome não disponível',
       personagem: item.character || 'Personagem não informado',
       fotoUrl: item.profile_path 
         ? `${IMAGE_BASE_URL}${item.profile_path}` 
-        : item.imageUrl || '/placeholder-actor.jpg', // Usa imageUrl se já foi processado pelo tmdb.js
+        : item.imageUrl || '/placeholder-actor.jpg',
       fotoPath: item.profile_path
     }
 
     return (
       <div className={styles.actorCard}>
         {/* 
-          Dados prontos para você estilizar:
           - dadosAtor.nome (string): Nome do ator
           - dadosAtor.personagem (string): Personagem que interpreta
           - dadosAtor.fotoUrl (string): URL completa da foto do ator
           - dadosAtor.id (number): ID do ator no TMDB
         */}
         
-        {/* Estrutura basic temporária - substitua pela sua estilização */}
         <div className={styles.actorImageContainer}>
           <img 
             src={dadosAtor.fotoUrl} 
@@ -109,7 +105,6 @@ const ItensCard = ({ item, tipo }) => {
         </div>
 
         {/* 
-          Dados disponíveis para você usar:
           {dadosAtor.nome} - Nome do ator
           {dadosAtor.personagem} - Personagem
           {dadosAtor.fotoUrl} - URL da foto

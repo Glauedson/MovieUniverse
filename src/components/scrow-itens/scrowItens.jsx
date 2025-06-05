@@ -57,8 +57,8 @@ const ScrollItens = ({
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.shadow}></div>
+    <div className={styles.shadow}>
+      <div className={styles.container}>
       <div className={styles.scrollContainer}>
         <div className={styles.scrollItens}>
           {itens.map((item) => (
@@ -70,6 +70,7 @@ const ScrollItens = ({
           ))}
         </div>
       </div>
+    </div>
     </div>
   )
 }

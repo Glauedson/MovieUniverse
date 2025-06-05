@@ -43,6 +43,12 @@ const tmdbAPI = {
     return data
   },
 
+  // Detalhes de uma série específica
+  getTVShowDetails: async (tvId) => {
+    const data = await fetchFromAPI(`/tv/${tvId}`)
+    return data
+  },
+
   // Créditos do filme (elenco e equipe)
   getMovieCredits: async (movieId) => {
     const data = await fetchFromAPI(`/movie/${movieId}/credits`)

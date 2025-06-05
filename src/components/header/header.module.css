@@ -5,6 +5,7 @@
     position: fixed !important;
     width: 100%;
     z-index: 1000;
+    align-items: center;
 }
 
 h3 {
@@ -18,12 +19,25 @@ h3 {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    max-width: 1300px;
     height: 63px;
     align-items: center;
     background-color: rgba(248, 248, 248, 0.068);
     backdrop-filter: blur(15px);
     padding: 0 20px;
     border-radius: 0 0 10px 10px;
+}
+
+.headerContent::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(270deg, #ffffff, #535353, #ffffff);
+    background-size: 200% 100%;
+    animation: slideLine 2s linear infinite alternate;
 }
 
 .profileImage {

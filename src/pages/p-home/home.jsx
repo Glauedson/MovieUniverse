@@ -9,7 +9,8 @@ export default function Home() {
     <>
     <Header />
 
-    <div className={style.mainHome} > 
+    <div className={style.mainHome} >
+      <div className={style.mainContent}>
         <h3>MAIS POPULARES</h3>
         <ScrollItens 
           dados={tmdbAPI.getPopularMovies}
@@ -22,7 +23,7 @@ export default function Home() {
             dados={tmdbAPI.getPopularTVShows}
             tipo="filmes"
             titulo="Filmes Populares"
-          />
+        />
 
         <h3>FILMES MAIS BEM AVALIADOS</h3>
         <ScrollItens 
@@ -30,7 +31,7 @@ export default function Home() {
             tipo="filmes"
             titulo="Filmes Populares"
           />
-          
+      </div>   
     </div>
     </>
   )
