@@ -1,4 +1,5 @@
 import Header from '../../components/header/header.jsx'
+import Footer from '../../components/footer/footer.jsx'
 import ScrollItens from '../../components/scrow-itens/scrowItens.jsx'
 import tmdbAPI from '../../api/tmdb.js'
 import style from './home.module.css'
@@ -33,6 +34,7 @@ export default function Home() {
           />
       </div>   
     </div>
+    <Footer />
     </>
   )
 }
