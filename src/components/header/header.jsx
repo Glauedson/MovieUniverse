@@ -52,6 +52,7 @@ export default function Header() {
         {/* Mobile Navigation */}
         <nav className={`${style.mobileNav} ${isMenuOpen ? style.mobileNavOpen : ''}`}>
           <div className={style.mobileNavContent}>
+            <Link to="/" onClick={toggleMenu}>HOME</Link>
             <Link to="/" onClick={toggleMenu}>EM ALTA</Link>
             <Link to="/" onClick={toggleMenu}>FILMES</Link>
             <Link to="/" onClick={toggleMenu}>SERIES</Link>
