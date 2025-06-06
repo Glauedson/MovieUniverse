@@ -125,6 +125,186 @@ h3 {
     border-bottom: none;
 }
 
+/* Search Bar Styles */
+.searchBar {
+    max-height: 0;
+    width: 100%;
+    max-width: 1300px;
+    overflow: hidden;
+    background-color: rgba(248, 248, 248, 0.068);
+    backdrop-filter: blur(15px);
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+.searchBarOpen {
+    max-height: 600px;
+    opacity: 1;
+}
+
+.searchContent {
+    padding: 20px;
+    transform: translateY(-20px);
+    transition: transform 0.4s ease-in-out;
+}
+
+.searchBarOpen .searchContent {
+    transform: translateY(0);
+}
+
+.searchInputContainer {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+.searchInputContainer:focus-within {
+    border-color: var(--primary-color);
+}
+
+.searchInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.closeSearchIcon {
+    color: rgba(255, 255, 255, 0.7);
+    margin-left: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.closeSearchIcon:hover {
+    color: white;
+}
+
+.searchResults {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.loadingMessage, .noResults {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    font-size: 0.95rem;
+}
+
+.resultsList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.resultLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.resultItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.resultLink:hover .resultItem,
+.resultItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.resultImage {
+    flex-shrink: 0;
+    width: 60px;
+    height: 90px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resultImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.noImage {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+}
+
+.resultInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.resultInfo h4 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.resultType {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin: 0 0 8px 0;
+    font-weight: 500;
+}
+
+.resultOverview {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Custom Scrollbar for Search Results */
+.searchResults::-webkit-scrollbar {
+    width: 6px;
+}
+
+.searchResults::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.searchResults::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.searchResults::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
 /* Design Responsivo */
 @media (max-width: 530px) {
     .logo {
@@ -181,6 +361,37 @@ h3 {
     .mobileNav {
         display: block;
     }
+
+    /* Search Responsive */
+    .searchContent {
+        padding: 15px;
+    }
+
+    .searchInputContainer {
+        padding: 10px 14px;
+    }
+
+    .resultItem {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .resultImage {
+        width: 50px;
+        height: 75px;
+    }
+
+    .resultInfo h4 {
+        font-size: 0.9rem;
+    }
+
+    .resultType {
+        font-size: 0.8rem;
+    }
+
+    .resultOverview {
+        font-size: 0.75rem;
+    }
 }
 
 @media (min-width: 531px) {
@@ -190,6 +401,12 @@ h3 {
 
     .headerContent::before{
         display: none;
+    }
 
+    /* Desktop search icon */
+    .menuIcon {
+        display: flex;
+        width: 1.2rem;
+        padding: 9px 25px;
     }
 }
