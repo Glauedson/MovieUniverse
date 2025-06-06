@@ -58,9 +58,33 @@ const tmdbAPI = {
     }
   },
 
+  // Créditos da série TV (elenco e equipe)
+  getTVShowCredits: async (tvId) => {
+    const data = await fetchFromAPI(`/tv/${tvId}/credits`)
+    return {
+      cast: data.cast || [],
+      crew: data.crew || []
+    }
+  },
+
   // Atores de um filme específico
   getMovieActors: async (movieId) => {
     const data = await fetchFromAPI(`/movie/${movieId}/credits`)
+    const cast = data.cast || []
+    return cast.map(actor => ({
+      id: actor.id,
+      name: actor.name,
+      character: actor.character,
+      profile_path: actor.profile_path,
+      imageUrl: actor.profile_path 
+        ? `${IMAGE_BASE_URL}${actor.profile_path}` 
+        : null
+    }))
+  },
+
+  // Atores de uma série específica
+  getTVShowActors: async (tvId) => {
+    const data = await fetchFromAPI(`/tv/${tvId}/credits`)
     const cast = data.cast || []
     return cast.map(actor => ({
       id: actor.id,
