@@ -22,7 +22,11 @@ export default function Details() {
       try {
         setLoading(true)
         
-        if (category === 'movies') {
+        // Normalizar a categoria - aceitar tanto movie/movies quanto tv/series  
+        const isMovie = category === 'movie' || category === 'movies'
+        const isTVShow = category === 'tv' || category === 'series'
+        
+        if (isMovie) {
           // Buscar detalhes do filme
           const movieDetails = await tmdbAPI.getMovieDetails(id)
           setMovieData(movieDetails)
@@ -32,7 +36,7 @@ export default function Details() {
           const movieCast = await tmdbAPI.getMovieActors(id)
           setCast(movieCast)
           
-        } else {
+        } else if (isTVShow) {
           // Buscar detalhes da série
           const tvDetails = await tmdbAPI.getTVShowDetails(id)
           setMovieData(tvDetails)
@@ -41,6 +45,8 @@ export default function Details() {
           // Buscar elenco da série
           const tvCast = await tmdbAPI.getTVShowActors(id)
           setCast(tvCast)
+        } else {
+          throw new Error(`Categoria inválida: ${category}. Use 'movie', 'movies', 'tv' ou 'series'.`)
         }
         
       } catch (err) {
