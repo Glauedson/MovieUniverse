@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './footer.module.css';
 import github from '../../assets/icons/github-icon.svg';
 import linkedin from '../../assets/icons/linkedin-icon.svg';
+import logo from '../../assets/icons/logo_Screen.png'
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.leftSection}>
-            <h3>MOVIE UNIVERSE</h3>
+            <img src={logo} alt="logo" />
             <p className={styles.copyright}>
               Glauedson Carlos Rodrigues
             </p>

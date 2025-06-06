@@ -1,11 +1,9 @@
-// Header =  cabeçalho do site
-// Talvez eu coloque mais informações aqui no futuro, mas por enquanto é só um cabeçalho simples
-// sem links ou botões
 import { useState, useEffect } from 'react'
 import style from './header.module.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faMagnifyingGlass, faTimes } from "@fortawesome/free-solid-svg-icons"
+import logo from '../../assets/icons/logo_Screen.png' 
 import tmdbAPI from '../../api/tmdb.js'
 
 export default function Header() {
@@ -88,7 +86,7 @@ export default function Header() {
             />
 
             <div className={style.headerCategory}>
-              <h3 className={style.logo}>MOVIE UNIVERSE</h3>
+              <Link to="/"><img src={logo} className={style.logo}></img></Link>
               <div className={style.headerCategoryLinks}>
                 <Link to="/">Em Alta</Link>
                 <Link to="/">Filmes</Link>
@@ -96,11 +94,13 @@ export default function Header() {
               </div>
             </div>
 
+
+            <div className={style.headerSearch}>
             {/* Lupa */}
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               style={{ color: "#fcfcfc" }}
-              className={style.menuIcon}
+              className={style.menuIconSearch}
               onClick={toggleSearch}
             />
             <img 
@@ -108,7 +108,7 @@ export default function Header() {
               alt="perfil da pessoa"
               className={style.profileImage}
             />
-
+            </div>
         </div>
         
         {/* Mobile Navigation */}

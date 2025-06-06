@@ -26,6 +26,10 @@
   gap: 0.5rem;
 }
 
+.leftSection img {
+  width: 100px;
+}
+
 .copyright {
   margin: 0;
   font-size: 0.95rem;
