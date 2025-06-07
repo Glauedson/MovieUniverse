@@ -190,4 +190,12 @@
         width: 100%;
         padding: 20px 0px;
     }
+
+    .titleMoreInfos {
+        font-size: 0.9rem;
+    }
+
+    .BoxInfo {
+        font-size: 1rem;
+    }
 }

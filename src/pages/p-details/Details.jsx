@@ -206,7 +206,6 @@ export default function Details() {
             <p className={styles.BoxInfo}>{movieData.budget ? `$${movieData.budget.toLocaleString()}` : 'Não disponível'}</p>
           </div>
         </div>
-
         
       </main>
       <Footer />
