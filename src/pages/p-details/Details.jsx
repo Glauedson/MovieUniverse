@@ -13,6 +13,7 @@ export default function Details() {
   
   // Estados para armazenar os dados
   const [movieData, setMovieData] = useState(null)
+  const [trailerData, setTrailer] = useState(null)
   const [cast, setCast] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -27,6 +28,10 @@ export default function Details() {
         const isTVShow = category === 'tv' || category === 'series'
         
         if (isMovie) {
+          // Buscar trailer do filme
+          const trailer = await tmdbAPI.getMovieTrailers(id)
+        setTrailer(trailer)
+
           // Buscar detalhes do filme
           const movieDetails = await tmdbAPI.getMovieDetails(id)
           setMovieData(movieDetails)
@@ -101,19 +106,7 @@ export default function Details() {
     )
   }
 
-  // Se não tiver dados
-  if (!movieData) {
-    return (
-      <>
-        <Header />
-        <main className={styles.main}>
-          <div style={{ padding: '2rem', textAlign: 'center' }}>
-            <p>Nenhum dado encontrado</p>
-          </div>
-        </main>
-      </>
-    )
-  }
+  console.log('Dados do filme/série:', movieData)
 
   return (
     <>
@@ -181,8 +174,42 @@ export default function Details() {
           />
         </div>
         
-        <Footer />
+        <h2 className={styles.subTitle}>TRAILER</h2>
+        <div className={styles.trailerContent}>
+          {trailerData && trailerData.length > 0 ? (
+            <iframe
+              title="Trailer"
+              src={`https://www.youtube.com/embed/${trailerData[0].key}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className={styles.trailerVideo}
+            ></iframe>
+          ) : (
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgxClYeVFnRrAFgbpLPNEwsyfn0qKutdLz9w&s"
+              alt="Trailer não disponível"
+              className={styles.trailerVideo}
+            />
+          )}
+
+          <div className={styles.moreInfos}>
+            <p className={styles.titleMoreInfos}>Título Original</p>
+            <p className={styles.BoxInfo}>{movieData.original_title || movieData.name}</p>
+
+            <p className={styles.titleMoreInfos}>Idioma Original</p>
+            <p className={styles.BoxInfo}>{movieData.original_language.toUpperCase()}</p>
+
+            <p className={styles.titleMoreInfos}>Status</p> 
+            <p className={styles.BoxInfo}>{movieData.status}</p>
+
+            <p className={styles.titleMoreInfos}>Orçamento</p> 
+            <p className={styles.BoxInfo}>{movieData.budget ? `$${movieData.budget.toLocaleString()}` : 'Não disponível'}</p>
+          </div>
+        </div>
+
+        
       </main>
+      <Footer />
     </>
   )
 }

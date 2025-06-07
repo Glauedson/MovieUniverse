@@ -43,6 +43,12 @@ const tmdbAPI = {
     return data
   },
 
+  // Trailers de um filme específico
+  getMovieTrailers: async (movieId) => {
+    const data = await fetchFromAPI(`/movie/${movieId}/videos`)
+    return data.results || []
+  },
+
   // Detalhes de uma série específica
   getTVShowDetails: async (tvId) => {
     const data = await fetchFromAPI(`/tv/${tvId}`)

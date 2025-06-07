@@ -1,6 +1,9 @@
 .main {
     color: white;
     background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .Banner {
@@ -32,7 +35,7 @@
     margin-left: 20px;
     padding: 20px 30px;
     gap: 10px;
-    background-color: rgba(43, 41, 41, 0.014);
+    background-color: rgba(0, 0, 0, 0.027);
     backdrop-filter: blur(17px);
 }
 
@@ -42,8 +45,11 @@
     color: var(--text-color);
 }
 
+.movieTitle, .overview {
+    text-shadow: #333 0px 0px 5px;
+}
+
 .genres {
-    margin-top: 20PX;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -67,7 +73,7 @@
 }
 
 .movieDescription {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     color: var(--text-color);
     text-shadow: #333 0px 0px 5px;
 }
@@ -86,6 +92,50 @@
     margin: 0 auto;
     margin-top: 100px;
     background-color: var(--background-color);
+}
+
+.subTitle {
+    display: flex;
+    width: 100%;
+    max-width: 1300px;
+    padding: 20px 0 0 2px;
+}
+
+.trailerContent {
+    display: flex;
+    width: 100%;
+    max-width: 1300px;
+    padding: 20px 0;
+}
+
+.trailerVideo {
+    width: 70%;
+    aspect-ratio: 16/9;
+    background-color: black;
+    box-shadow: inset 0px -40px 15px 0px var(--background-color),0px 10px 15px -3px var(--background-color);
+}
+
+.moreInfos {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 0 20px;
+    gap: 10px;
+}
+
+.titleMoreInfos {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.432);
+}
+
+.BoxInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 1.22rem;
+    background-color: var(--card-color);
 }
 
 /* responsividade */
@@ -118,7 +168,26 @@
     }
 
     .content > h2 {
-        margin-left: 15px;
-        font-size: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .subTitle {
+        padding: 10px 0 0 20px;
+        font-size: 0.8rem;
+    }
+
+    .trailerContent {
+        flex-direction: column;
+        padding: 20px 20px;
+    }
+
+    .trailerVideo {
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
+
+    .moreInfos {
+        width: 100%;
+        padding: 20px 0px;
     }
 }
